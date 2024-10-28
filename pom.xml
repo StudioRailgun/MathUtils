@@ -7,6 +7,10 @@
     <version>1.0</version>
     <packaging>jar</packaging>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Math Utilities written in Java</description>
+    <url>https://github.com/StudioRailgun/MathUtils</url>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>17</maven.compiler.source>
@@ -16,14 +20,22 @@
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://opensource.org/license/mit</url>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
 
     <scm>
-        <url>https://github.com/StudioRailgun/MathUtils</url>
+        <url>https://github.com/StudioRailgun/MathUtils/tree/main</url>
     </scm>
+
+    <developers>
+      <developer>
+         <name>StudioRailgun</name>
+         <organization>Studio Railgun</organization>
+         <organizationUrl>https://github.com/StudioRailgun</organizationUrl>
+      </developer>
+    </developers>
     
     <build>
       <plugins>
