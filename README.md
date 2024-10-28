@@ -1,2 +1,2 @@
 # MathUtils
-Math utility functions
+Math Utilities written in Java
