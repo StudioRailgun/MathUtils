@@ -4,7 +4,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>io.github.studiorailgun</groupId>
    <artifactId>MathUtils</artifactId>
-   <version>1.0.1</version>
+   <version>1.0.2</version>
    <packaging>jar</packaging>
 
    <name>${project.groupId}:${project.artifactId}</name>
@@ -110,6 +110,7 @@
             <version>0.6.0</version>
             <extensions>true</extensions>
             <configuration>
+               <autoPublish>true</autoPublish>
                <publishingServerId>central</publishingServerId>
                <checksums>all</checksums>
             </configuration>

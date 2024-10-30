@@ -293,5 +293,14 @@ public class MathUtils {
 
         return 0;
     }
+
+    /**
+     * Checks if a number is a power of two
+     * @param x The number
+     * @return true if it is a power of two, false otherwise
+     */
+    public static boolean isPowerOfTwo(long x){
+        return (x & (x - 1)) == 0;
+    }
     
 }
