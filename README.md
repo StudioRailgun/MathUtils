@@ -9,6 +9,9 @@ Implements fundamental functions like `fract` and `dot`.
 ### NoiseUtils
 Implements various noise-generating functions.
 
+### HashUtils
+Implements functions to hash numbers.
+
 
 
 
