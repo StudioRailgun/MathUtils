@@ -26,5 +26,17 @@ public class HashUtils {
     public static int cantorHash(int a, int b, int c){
         return cantor(a, cantor(b, c));
     }
+
+    /**
+     * Computes a hash of four numbers using cantor pairing
+     * @param a The first number
+     * @param b The second number
+     * @param c The third number
+     * @param d The fourth number
+     * @return The hash
+     */
+    public static int cantorHash(int a, int b, int c, int d){
+        return cantor(a, cantor(b, cantor(c,d)));
+    }
     
 }
