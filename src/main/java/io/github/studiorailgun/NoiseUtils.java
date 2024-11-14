@@ -87,8 +87,8 @@ public class NoiseUtils {
         double minDist = 10.0;
         for(int i = 0; i < KERNEL_3_3_X.length; i++){
             //the point of this cell
-            double p_x = MathUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 0);
-            double p_y = MathUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 1);
+            double p_x = RandUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 0);
+            double p_y = RandUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 1);
 
             //dist calc + comparison
             double dist = Math.sqrt((p_x + KERNEL_3_3_X[i] - x_r) * (p_x + KERNEL_3_3_X[i] - x_r) + (p_y + KERNEL_3_3_Y[i] - y_r) * (p_y + KERNEL_3_3_Y[i] - y_r));
@@ -122,9 +122,9 @@ public class NoiseUtils {
         double minDist = 10.0;
         for(int i = 0; i < KERNEL_3_3_3_X.length; i++){
             //the point of this cell
-            double p_x = MathUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 0);
-            double p_y = MathUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 1);
-            double p_z = MathUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 2);
+            double p_x = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 0);
+            double p_y = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 1);
+            double p_z = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 2);
 
             //dist calc + comparison
             double dist = Math.sqrt(
@@ -158,8 +158,8 @@ public class NoiseUtils {
         double source_y = y - y_i;
 
         //calculate the current cell's point
-        double cell_x = MathUtils.rand(x_i,y_i,0);
-        double cell_y = MathUtils.rand(x_i,y_i,1);
+        double cell_x = RandUtils.rand(x_i,y_i,0);
+        double cell_y = RandUtils.rand(x_i,y_i,1);
 
         //relax the point
         double x_relaxed = cell_x * (1.0 - relaxationFactor) + (relaxationFactor / 2.0);

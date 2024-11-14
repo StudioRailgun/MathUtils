@@ -6,24 +6,6 @@ package io.github.studiorailgun;
 public class MathUtils {
 
     /**
-     * The magnitude of the random oscillator
-     */
-    static final float RANDOM_MAGNITUDE = 100000.0f;
-
-    /**
-     * Half of pi
-     */
-    public static final double HALF_PI = Math.PI / 2.0;
-
-    /**
-     * Values for the vector dot'd to create a pseudorandom number
-     */
-    static final double RAND_VEC_X_VAL = 111.154315;
-    static final double RAND_VEC_Y_VAL = 123.631631;
-    static final double RAND_VEC_Z_VAL = 117.724545;
-    static final double RAND_VEC_W_VAL = 141.724545;
-
-    /**
      * Calculates the fractional component of a number
      * @param num The number
      * @return The fractional component
@@ -39,48 +21,6 @@ public class MathUtils {
      */
     public static double fract(double num){
         return num - Math.floor(num);
-    }
-
-    /**
-     * Calculates a random number. Range [0,1]
-     * @param in The input
-     * @return The output
-     */
-    public static double rand(double in){
-        return fract(Math.sin(in) * RANDOM_MAGNITUDE);
-    }
-
-    /**
-     * Calculates a random number. Range [0,1]
-     * @param x The x input
-     * @param y The y input
-     * @return The output
-     */
-    public static double rand(double x, double y){
-        return fract(Math.sin(dot(x,y,RAND_VEC_X_VAL,RAND_VEC_Y_VAL)) * RANDOM_MAGNITUDE);
-    }
-
-    /**
-     * Calculates a random number. Range [0,1]
-     * @param x The x input
-     * @param y The y input
-     * @param z The z input
-     * @return The output
-     */
-    public static double rand(double x, double y, double z){
-        return fract(Math.sin(dot(x,y,z,RAND_VEC_X_VAL,RAND_VEC_Y_VAL,RAND_VEC_Z_VAL)) * RANDOM_MAGNITUDE);
-    }
-
-    /**
-     * Calculates a random number. Range [0,1]
-     * @param x The x input
-     * @param y The y input
-     * @param z The z input
-     * @param w The w input
-     * @return The output
-     */
-    public static double rand(double x, double y, double z, double w){
-        return fract(Math.sin(dot(x,y,z,w,RAND_VEC_X_VAL,RAND_VEC_Y_VAL,RAND_VEC_Z_VAL,RAND_VEC_W_VAL)) * RANDOM_MAGNITUDE);
     }
 
     /**
@@ -123,6 +63,32 @@ public class MathUtils {
      */
     public static double dot(double x1, double y1, double z1, double w1, double x2, double y2, double z2, double w2){
         return (x1*x2) + (y1*y2) + (z1*z2) + (w1*w2);
+    }
+
+    /**
+     * Calculates the distance between 2D points
+     * @param x1 The x coordinate of the first point
+     * @param y1 The y coordinate of the first point
+     * @param x2 The x coordinate of the second point
+     * @param y2 The y coordinate of the second point
+     * @return The distance
+     */
+    public static double dist(double x1, double y1, double x2, double y2){
+        return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1));
+    }
+
+    /**
+     * Calculates the distance between 3D points
+     * @param x1 The x coordinate of the first point
+     * @param y1 The y coordinate of the first point
+     * @param z1 The z coordinate of the first point
+     * @param x2 The x coordinate of the second point
+     * @param y2 The y coordinate of the second point
+     * @param z2 The z coordinate of the second point
+     * @return The distance
+     */
+    public static double dist(double x1, double y1, double z1, double x2, double y2, double z2){
+        return Math.sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1) + (z2 - z1) * (z2 - z1));
     }
 
     /**

@@ -12,6 +12,9 @@ Implements various noise-generating functions.
 ### HashUtils
 Implements functions to hash numbers.
 
+### RandUtils
+Implements functions for generating random numbers.
+
 
 
 
@@ -21,6 +24,6 @@ Implements functions to hash numbers.
 <dependency>
     <groupId>io.github.studiorailgun</groupId>
     <artifactId>MathUtils</artifactId>
-    <version>1.0.2</version>
+    <version>1.3.0</version>
 </dependency>
 ```
