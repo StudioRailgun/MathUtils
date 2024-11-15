@@ -69,38 +69,6 @@ public class NoiseUtils {
     };
 
     /**
-     * Calculates voronoi noise on a 2d plane
-     * @param x The x coordinate
-     * @param y The y coordinate
-     * @return The voronoi value
-     */
-    public static double voronoi(double x, double y){
-        //integer of the point coordinates
-        double x_i = Math.floor(x);
-        double y_i = Math.floor(y);
-
-        //remainders of the point coordinates
-        double x_r = x - x_i;
-        double y_r = y - y_i;
-
-        //calculate min dist
-        double minDist = 10.0;
-        for(int i = 0; i < KERNEL_3_3_X.length; i++){
-            //the point of this cell
-            double p_x = RandUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 0);
-            double p_y = RandUtils.rand(x_i + KERNEL_3_3_X[i], y_i + KERNEL_3_3_Y[i], 1);
-
-            //dist calc + comparison
-            double dist = Math.sqrt((p_x + KERNEL_3_3_X[i] - x_r) * (p_x + KERNEL_3_3_X[i] - x_r) + (p_y + KERNEL_3_3_Y[i] - y_r) * (p_y + KERNEL_3_3_Y[i] - y_r));
-            if(dist < minDist){
-                minDist = dist;
-            }
-        }
-
-        return minDist;
-    }
-
-    /**
      * Calculates voronoi noise within a cube
      * @param x The x coordinate
      * @param y The y coordinate
@@ -141,6 +109,16 @@ public class NoiseUtils {
     }
 
     /**
+     * Calculates voronoi noise on a 2d plane
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @return The voronoi value
+     */
+    public static double voronoi(double x, double y){
+        return voronoi(x, y, 0);
+    }
+
+    /**
      * Generates relaxed points
      * @param x The x position
      * @param y The y position
@@ -172,6 +150,103 @@ public class NoiseUtils {
         }
 
         return 0;
+    }
+
+    /**
+     * Calculates voronoi noise within a cube
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @param z The z coordinate
+     * @param relaxationFactor The relaxation factor
+     * @return The voronoi value
+     */
+    public static double voronoiRelaxed(double x, double y, double z, double relaxationFactor){
+        //integer of the point coordinates
+        double x_i = Math.floor(x);
+        double y_i = Math.floor(y);
+        double z_i = Math.floor(z);
+
+        //remainders of the point coordinates
+        double x_r = x - x_i;
+        double y_r = y - y_i;
+        double z_r = z - z_i;
+
+        //calculate min dist
+        double minDist = 10.0;
+        for(int i = 0; i < KERNEL_3_3_3_X.length; i++){
+            //the point of this cell
+            double p_x = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 0);
+            double p_y = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 1);
+            double p_z = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 2);
+
+            //relax the point
+            double x_relaxed = p_x * (1.0 - relaxationFactor) + (relaxationFactor / 2.0);
+            double y_relaxed = p_y * (1.0 - relaxationFactor) + (relaxationFactor / 2.0);
+            double z_relaxed = p_z * (1.0 - relaxationFactor) + (relaxationFactor / 2.0);
+
+            //dist calc + comparison
+            double dist = Math.sqrt(
+                (x_relaxed + KERNEL_3_3_3_X[i] - x_r) * (x_relaxed + KERNEL_3_3_3_X[i] - x_r) +
+                (y_relaxed + KERNEL_3_3_3_Y[i] - y_r) * (y_relaxed + KERNEL_3_3_3_Y[i] - y_r) +
+                (z_relaxed + KERNEL_3_3_3_Z[i] - z_r) * (z_relaxed + KERNEL_3_3_3_Z[i] - z_r)
+            );
+            if(dist < minDist){
+                minDist = dist;
+            }
+        }
+
+        return minDist;
+    }
+
+    /**
+     * Calculates voronoi noise on a 2d plane
+     * @param x The x coordinate
+     * @param y The y coordinate
+     * @param relaxationFactor The relaxation factor
+     * @return The voronoi value
+     */
+    public static double voronoiRelaxed(double x, double y, double relaxationFactor){
+        return voronoiRelaxed(x, y, 0, relaxationFactor);
+    }
+
+
+    /**
+     * Calculates a smooth voronoi noise value
+     * @param x The x value
+     * @param y The y value
+     * @param z The z value
+     * @param falloff The falloff (recommended values in range (4,256] )
+     * @return The smooth voronoi noise value
+     */
+    public static double smoothVoronoi(double x, double y, double z, double falloff){
+        //integer of the point coordinates
+        double x_i = Math.floor(x);
+        double y_i = Math.floor(y);
+        double z_i = Math.floor(z);
+
+        //remainders of the point coordinates
+        double x_r = x - x_i;
+        double y_r = y - y_i;
+        double z_r = z - z_i;
+
+        //calculate min dist
+        double res = 0.0;
+        for(int i = 0; i < KERNEL_3_3_3_X.length; i++){
+            //the point of this cell
+            double p_x = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 0);
+            double p_y = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 1);
+            double p_z = RandUtils.rand(x_i + KERNEL_3_3_3_X[i], y_i + KERNEL_3_3_3_Y[i], z_i + KERNEL_3_3_3_Z[i], 2);
+
+            //dist calc + comparison
+            double dist = Math.sqrt(
+                (p_x + KERNEL_3_3_3_X[i] - x_r) * (p_x + KERNEL_3_3_3_X[i] - x_r) +
+                (p_y + KERNEL_3_3_3_Y[i] - y_r) * (p_y + KERNEL_3_3_3_Y[i] - y_r) +
+                (p_z + KERNEL_3_3_3_Z[i] - z_r) * (p_z + KERNEL_3_3_3_Z[i] - z_r)
+            );
+            res = res + Math.exp(-falloff * dist);
+        }
+
+        return -(1.0/falloff)*Math.log(res);
     }
     
 }

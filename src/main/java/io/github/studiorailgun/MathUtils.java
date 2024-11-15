@@ -113,5 +113,16 @@ public class MathUtils {
         if( bits >= 4   ) { bits >>>= 2; log += 2; }
         return log + ( bits >>> 1 );
     }
+
+    /**
+     * Clamps a value
+     * @param val The value
+     * @param min The minimum value
+     * @param max The maximum value
+     * @return The clamped value
+     */
+    public static double clamp(double val, double min, double max){
+        return Math.max(Math.min(val,max),min);
+    }
     
 }
