@@ -8,7 +8,7 @@ public class RandUtils {
     /**
      * The magnitude of the random oscillator
      */
-    static final float RANDOM_MAGNITUDE = 100000.0f;
+    private static final float RANDOM_MAGNITUDE = 100000.0f;
 
     /**
      * Half of pi
@@ -18,10 +18,10 @@ public class RandUtils {
     /**
      * Values for the vector dot'd to create a pseudorandom number
      */
-    static final double RAND_VEC_X_VAL = 111.154315;
-    static final double RAND_VEC_Y_VAL = 123.631631;
-    static final double RAND_VEC_Z_VAL = 117.724545;
-    static final double RAND_VEC_W_VAL = 141.724545;
+    private static final double RAND_VEC_X_VAL = 111.154315;
+    private static final double RAND_VEC_Y_VAL = 123.631631;
+    private static final double RAND_VEC_Z_VAL = 117.724545;
+    private static final double RAND_VEC_W_VAL = 141.724545;
 
     /**
      * Calculates a random number. Range [0,1]

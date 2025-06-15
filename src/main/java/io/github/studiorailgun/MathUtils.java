@@ -124,5 +124,16 @@ public class MathUtils {
     public static double clamp(double val, double min, double max){
         return Math.max(Math.min(val,max),min);
     }
+
+    /**
+     * Linearly interpolates between two doubles
+     * @param a The first double
+     * @param b The second double
+     * @param percent The percentage to interpolate between them
+     * @return The interpolated value
+     */
+    public static double lerp(double a, double b, double percent){
+        return a * (1.0 - percent) + (b * percent);
+    }
     
 }

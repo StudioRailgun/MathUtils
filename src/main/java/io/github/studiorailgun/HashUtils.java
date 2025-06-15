@@ -12,7 +12,7 @@ public class HashUtils {
      * @param b The second number
      * @return The pairing
      */
-    public static int cantor(int a, int b){
+    public static long cantor(long a, long b){
         return (a + b + 1) * (a + b) / 2 + b;
     }
 
@@ -23,8 +23,8 @@ public class HashUtils {
      * @param c The third number
      * @return The hash
      */
-    public static int cantorHash(int a, int b, int c){
-        return cantor(a, cantor(b, c));
+    public static long cantorHash(long a, long b, long c){
+        return HashUtils.cantor(a, HashUtils.cantor(b, c));
     }
 
     /**
@@ -35,8 +35,8 @@ public class HashUtils {
      * @param d The fourth number
      * @return The hash
      */
-    public static int cantorHash(int a, int b, int c, int d){
-        return cantor(a, cantor(b, cantor(c,d)));
+    public static long cantorHash(long a, long b, long c, long d){
+        return HashUtils.cantor(a, HashUtils.cantor(b, HashUtils.cantor(c,d)));
     }
     
 }

@@ -4,7 +4,7 @@
    <modelVersion>4.0.0</modelVersion>
    <groupId>io.github.studiorailgun</groupId>
    <artifactId>MathUtils</artifactId>
-   <version>1.4.0</version>
+   <version>1.5.0</version>
    <packaging>jar</packaging>
 
    <name>${project.groupId}:${project.artifactId}</name>
@@ -15,6 +15,7 @@
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
       <maven.compiler.source>17</maven.compiler.source>
       <maven.compiler.target>17</maven.compiler.target>
+      <joml.version>1.9.19</joml.version>
    </properties>
 
    <licenses>
@@ -36,6 +37,15 @@
          <organizationUrl>https://github.com/StudioRailgun</organizationUrl>
       </developer>
    </developers>
+
+   <dependencies>
+      <!--License: MIT-->
+      <dependency>
+         <groupId>org.joml</groupId>
+         <artifactId>joml</artifactId>
+         <version>${joml.version}</version>
+      </dependency>
+   </dependencies>
    
    <build>
       <plugins>
@@ -85,7 +95,7 @@
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-gpg-plugin</artifactId>
-            <version>1.6</version>
+            <version>3.2.7</version>
             <executions>
                <execution>
                   <id>sign-artifacts</id>
