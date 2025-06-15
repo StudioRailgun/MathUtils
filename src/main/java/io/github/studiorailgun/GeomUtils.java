@@ -432,9 +432,15 @@ public class GeomUtils {
 
     /**
      * Gets the minimum squared distance from a point to an axis aligned cube
-     * @param pos the position to check against
-     * @param cubeMin The min position of the cube
-     * @param cubeMax The max position of the cube
+     * @param posX the x position to check against
+     * @param posY the y position to check against
+     * @param posZ the z position to check against
+     * @param minX the x minimum of the AABB
+     * @param minY the y minimum of the AABB
+     * @param minZ the z minimum of the AABB
+     * @param maxX the x maximum of the AABB
+     * @param maxY the y maximum of the AABB
+     * @param maxZ the z maximum of the AABB
      * @return the distance
      */
     public static double getMinSquaredDistanceAABBUnrolled(int posX, int posY, int posZ, int minX, int minY, int minZ, int maxX, int maxY, int maxZ){
@@ -644,7 +650,6 @@ public class GeomUtils {
      * @param point The point
      * @param spline The tube's spline
      * @param radius The radius of the tube around the spline
-     * @param samplesPerSegment The samples per segment
      * @return true if they intersect, false otherwise
      */
     public static boolean pointIntersectsSpline(Vector3d point, Spline3d spline, double radius) {

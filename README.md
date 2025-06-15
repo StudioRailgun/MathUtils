@@ -36,6 +36,6 @@ This library currently depends on the [JOML](https://github.com/JOML-CI/JOML) ma
 <dependency>
     <groupId>io.github.studiorailgun</groupId>
     <artifactId>MathUtils</artifactId>
-    <version>1.5.0</version>
+    <version>1.5.1</version>
 </dependency>
 ```
